@@ -1,0 +1,51 @@
+services:
+  postgre:
+    image: postgres
+    container_name: postgres
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: example
+      POSTGRES_PASSWORD: example
+    volumes:
+      - ./db-data:/var/lib/postgresql/data
+    networks:
+      - l_nwrk
+
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    restart: unless-stopped
+    ports:
+      - 3000:3000
+    volumes:
+      - ./grafana:/etc/grafana/provisioning/datasources
+    networks:
+      - l_nwrk
+
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    ports:
+      - 9090:9090
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    networks:
+      - l_nwrk
+
+  postgres-exporter:
+    image: prometheuscommunity/postgres-exporter
+    container_name: postgres-exporter
+    restart: always
+    environment:
+      DATA_SOURCE_URI: postgres:5432/postgres?sslmode=disable
+      DATA_SOURCE_USER: example
+      DATA_SOURCE_PASS: example
+    ports:
+      - 9187:9187
+    networks:
+      - l_nwrk
+
+networks:
+  l_nwrk:
