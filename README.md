@@ -9,6 +9,9 @@ sudo docker compose up --build
 sudo docker exec -it postgres psql -U example
 ```
 
+## configure data source
+
+
 ## grafana
 [http://localhost:3000/](http://localhost:3000/)
 
@@ -17,3 +20,8 @@ sudo docker exec -it postgres psql -U example
 
 ## exporter
 [http://localhost:9187/](http://localhost:9187/)
+
+## clean-up
+```bash
+sudo docker system prune -a --volumes
+```
