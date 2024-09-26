@@ -10,6 +10,7 @@ sudo docker exec -it postgres psql -U example
 ```
 
 ## configure data source
+[http://localhost:3000/connections/datasources/new](http://localhost:3000/connections/datasources/new)
 
 
 ## grafana
