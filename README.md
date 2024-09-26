@@ -11,6 +11,9 @@ sudo docker exec -it postgres psql -U example
 
 ## configure data source
 [http://localhost:3000/connections/datasources/new](http://localhost:3000/connections/datasources/new)
+![image](https://github.com/user-attachments/assets/feb15253-6a6d-4855-b465-753c3a0b9f72)
+paste http://prometheus:9090 then click 'Save & test'
+![image](https://github.com/user-attachments/assets/f9824bef-c1ca-4a5e-8cad-d5a81f4338df)
 
 
 ## grafana
